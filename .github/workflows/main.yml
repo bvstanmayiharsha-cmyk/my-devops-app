@@ -18,7 +18,7 @@ jobs:
 
       - name: Validate File
         run: |
-          if [ -f index.html ]; then
+         if [ -f wrong.html ]; then
             echo "File exists ✅"
           else
             echo "File missing ❌"
@@ -27,3 +27,4 @@ jobs:
 
       - name: Build Step
         run: echo "Build successful 🚀"
+
