@@ -18,7 +18,7 @@ jobs:
 
       - name: Validate File
         run: |
-         if [ -f wrong.html ]; then
+         if [ -f index.html ]; then
             echo "File exists ✅"
           else
             echo "File missing ❌"
