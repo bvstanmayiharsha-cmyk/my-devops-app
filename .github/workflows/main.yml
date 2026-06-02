@@ -1,4 +1,4 @@
-name: DevOps CI Pipeline
+name: DevOps Pipeline
 
 on:
   push:
@@ -10,21 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-      - name: Show Files
-        run: ls -la
+    - name: Build Docker Image
+      run: |
+        docker build -t myapp .
 
-      - name: Validate File
-        run: |
-         if [ -f index.html ]; then
-            echo "File exists ✅"
-          else
-            echo "File missing ❌"
-            exit 1
-          fi
-
-      
-      - name: Build Docker Image
-        run: docker build -t myapp .
+    - name: Run Container
+      run: |
+        docker run -d -p 8080:80 myapp
